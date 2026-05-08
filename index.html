@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>WAR Alliance Registration</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
@@ -16,31 +17,31 @@
     }
 
     body{
+      font-family:'Rajdhani', sans-serif;
       background:
       linear-gradient(rgba(5,10,20,0.92), rgba(5,10,20,0.95)),
-      url('https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1600&auto=format&fit=crop');
+      url('https://images.unsplash.com/photo-1542751110-97427bbecf20?q=80&w=1600&auto=format&fit=crop');
       background-size:cover;
       background-attachment:fixed;
-      font-family:'Rajdhani', sans-serif;
       color:white;
-      padding:30px;
+      padding:20px;
     }
 
     .container{
-      max-width:1250px;
+      max-width:1200px;
       margin:auto;
-      background:rgba(15,23,42,0.92);
+      background:rgba(15,23,42,0.94);
       border-radius:24px;
       overflow:hidden;
       border:1px solid rgba(96,165,250,0.2);
       box-shadow:
       0 0 40px rgba(37,99,235,0.25),
-      0 0 80px rgba(0,0,0,0.5);
+      0 0 80px rgba(0,0,0,0.6);
       backdrop-filter:blur(8px);
     }
 
     .header{
-      padding:45px;
+      padding:40px;
       text-align:center;
       background:
       linear-gradient(135deg,#2563eb,#0f172a);
@@ -60,22 +61,21 @@
     }
 
     form{
-      padding:35px;
+      padding:30px;
     }
 
     .section{
       margin-bottom:35px;
-      padding:28px;
+      padding:25px;
       border-radius:20px;
-      background:rgba(30,41,59,0.88);
+      background:rgba(30,41,59,0.9);
       border:1px solid rgba(255,255,255,0.05);
-      box-shadow:0 0 20px rgba(0,0,0,0.25);
     }
 
     .section h2{
       font-family:'Orbitron', sans-serif;
       color:#60a5fa;
-      margin-bottom:25px;
+      margin-bottom:24px;
       font-size:24px;
       border-left:5px solid #3b82f6;
       padding-left:14px;
@@ -103,23 +103,40 @@
       color:white;
       font-size:16px;
       outline:none;
-      transition:0.3s;
     }
 
     input:focus,
     select:focus{
       box-shadow:0 0 0 2px #60a5fa;
-      background:#3d4f67;
     }
 
-    select[multiple]{
-      height:160px;
+    .checkbox-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:12px;
+      margin-top:12px;
     }
 
-    .multi-note{
-      margin-top:6px;
-      color:#94a3b8;
-      font-size:14px;
+    .checkbox-item{
+      background:#334155;
+      padding:12px 14px;
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      transition:0.3s;
+      border:1px solid rgba(255,255,255,0.05);
+    }
+
+    .checkbox-item:hover{
+      background:#3b4d66;
+      transform:translateY(-2px);
+    }
+
+    .checkbox-item input{
+      width:auto;
+      transform:scale(1.3);
+      cursor:pointer;
     }
 
     .hero-grid{
@@ -161,22 +178,20 @@
       font-family:'Orbitron', sans-serif;
       cursor:pointer;
       transition:0.3s;
-      letter-spacing:1px;
-      box-shadow:0 0 20px rgba(37,99,235,0.35);
+      margin-top:10px;
     }
 
     button:hover{
       transform:translateY(-2px);
-      box-shadow:0 0 25px rgba(96,165,250,0.6);
+      box-shadow:0 0 25px rgba(96,165,250,0.5);
     }
 
     .success{
       display:none;
-      margin-top:25px;
-      padding:18px;
-      border-radius:14px;
-      background:
-      linear-gradient(135deg,#15803d,#166534);
+      margin-top:20px;
+      background:#15803d;
+      padding:16px;
+      border-radius:12px;
       text-align:center;
       font-size:18px;
       font-weight:bold;
@@ -194,14 +209,12 @@
       background:#2563eb;
       padding:14px;
       text-align:left;
-      font-size:15px;
     }
 
     table td{
       background:#1e293b;
       padding:12px;
       border-bottom:1px solid rgba(255,255,255,0.05);
-      color:#e2e8f0;
     }
 
     table tr:hover td{
@@ -230,7 +243,7 @@
       }
 
       .section{
-        padding:20px;
+        padding:18px;
       }
 
     }
@@ -261,12 +274,12 @@
 
       <div class="field">
         <label>Player Name</label>
-        <input type="text" id="playerName" required />
+        <input type="text" id="playerName" required>
       </div>
 
       <div class="field">
         <label>Alliance Name</label>
-        <input type="text" id="allianceName" value="WAR" />
+        <input type="text" id="allianceName" value="WAR">
       </div>
 
     </div>
@@ -274,130 +287,60 @@
     <!-- EVENT TIMES -->
     <div class="section">
 
-      <h2>🕒 Event Time Preferences</h2>
+      <h2>🕒 Event Preferences</h2>
 
       <div class="field">
         <label>General Availability Time (UTC)</label>
-
-        <input
-          type="text"
-          id="generalAvailability"
-          placeholder="Example: 16:00 - 22:00 UTC"
-        />
+        <input type="text" id="availability" placeholder="Example: 16:00 - 22:00 UTC">
       </div>
 
       <div class="field">
-        <label>Your Time Zone (UTC)</label>
-
-        <input
-          type="text"
-          id="timezone"
-          placeholder="Example: UTC+2"
-        />
+        <label>Your Time Zone</label>
+        <input type="text" id="timezone" placeholder="Example: UTC+2">
       </div>
 
+      <!-- Canyon -->
       <div class="field">
-        <label>Canyon Time (UTC)</label>
 
-        <select id="canyon" multiple>
-          <option>02:00 UTC</option>
-          <option>12:00 UTC</option>
-          <option>14:00 UTC</option>
-          <option>19:00 UTC</option>
-          <option>21:00 UTC</option>
-        </select>
+        <label>Canyon Times</label>
 
-        <div class="multi-note">
-          Hold CTRL (Windows) or CMD (Mac) to select multiple options
-        </div>
+        <div class="checkbox-grid" id="canyonGroup"></div>
 
       </div>
 
+      <!-- Foundry -->
       <div class="field">
-        <label>Foundry Time (UTC)</label>
 
-        <select id="foundry" multiple>
-          <option>02:00 UTC</option>
-          <option>12:00 UTC</option>
-          <option>14:00 UTC</option>
-          <option>19:00 UTC</option>
-        </select>
+        <label>Foundry Times</label>
 
-        <div class="multi-note">
-          Hold CTRL (Windows) or CMD (Mac) to select multiple options
-        </div>
+        <div class="checkbox-grid" id="foundryGroup"></div>
 
       </div>
 
+      <!-- BT -->
       <div class="field">
-        <label>BT Preferred Time (UTC)</label>
 
-        <select id="bt" multiple>
-          <option>00:00 - 01:59 UTC</option>
-          <option>02:00 - 03:59 UTC</option>
-          <option>04:00 - 05:59 UTC</option>
-          <option>06:00 - 07:59 UTC</option>
-          <option>08:00 - 09:59 UTC</option>
-          <option>10:00 - 11:59 UTC</option>
-          <option>12:00 - 13:59 UTC</option>
-          <option>14:00 - 15:59 UTC</option>
-          <option>16:00 - 17:59 UTC</option>
-          <option>18:00 - 19:59 UTC</option>
-          <option>20:00 - 21:59 UTC</option>
-          <option>22:00 - 23:59 UTC</option>
-        </select>
+        <label>BT Preferred Times</label>
 
-        <div class="multi-note">
-          Hold CTRL (Windows) or CMD (Mac) to select multiple options
-        </div>
+        <div class="checkbox-grid" id="btGroup"></div>
 
       </div>
 
+      <!-- CJ -->
       <div class="field">
-        <label>CJ Preferred Time (UTC)</label>
 
-        <select id="cj" multiple>
-          <option>00:00 - 01:59 UTC</option>
-          <option>02:00 - 03:59 UTC</option>
-          <option>04:00 - 05:59 UTC</option>
-          <option>06:00 - 07:59 UTC</option>
-          <option>08:00 - 09:59 UTC</option>
-          <option>10:00 - 11:59 UTC</option>
-          <option>12:00 - 13:59 UTC</option>
-          <option>14:00 - 15:59 UTC</option>
-          <option>16:00 - 17:59 UTC</option>
-          <option>18:00 - 19:59 UTC</option>
-          <option>20:00 - 21:59 UTC</option>
-          <option>22:00 - 23:59 UTC</option>
-        </select>
+        <label>CJ Preferred Times</label>
 
-        <div class="multi-note">
-          Hold CTRL (Windows) or CMD (Mac) to select multiple options
-        </div>
+        <div class="checkbox-grid" id="cjGroup"></div>
 
       </div>
 
+      <!-- CC -->
       <div class="field">
-        <label>CC Preferred Time (UTC)</label>
 
-        <select id="cc" multiple>
-          <option>00:00 - 01:59 UTC</option>
-          <option>02:00 - 03:59 UTC</option>
-          <option>04:00 - 05:59 UTC</option>
-          <option>06:00 - 07:59 UTC</option>
-          <option>08:00 - 09:59 UTC</option>
-          <option>10:00 - 11:59 UTC</option>
-          <option>12:00 - 13:59 UTC</option>
-          <option>14:00 - 15:59 UTC</option>
-          <option>16:00 - 17:59 UTC</option>
-          <option>18:00 - 19:59 UTC</option>
-          <option>20:00 - 21:59 UTC</option>
-          <option>22:00 - 23:59 UTC</option>
-        </select>
+        <label>CC Preferred Times</label>
 
-        <div class="multi-note">
-          Hold CTRL (Windows) or CMD (Mac) to select multiple options
-        </div>
+        <div class="checkbox-grid" id="ccGroup"></div>
 
       </div>
 
@@ -417,7 +360,7 @@
     </button>
 
     <div class="success" id="successMessage">
-      ✅ Data submitted successfully!
+      ✅ Registration Submitted Successfully!
     </div>
 
   </form>
@@ -448,7 +391,7 @@
 
     <p class="note">
       Data currently stored in browser local storage.<br>
-      Later you can connect Google Sheets or Firebase.
+      Can later connect to Google Sheets or Firebase.
     </p>
 
   </div>
@@ -470,6 +413,63 @@ const heroes = [
   "Sergey",
   "Zinmann"
 ];
+
+const canyonTimes = [
+  "02:00 UTC",
+  "12:00 UTC",
+  "14:00 UTC",
+  "19:00 UTC",
+  "21:00 UTC"
+];
+
+const foundryTimes = [
+  "02:00 UTC",
+  "12:00 UTC",
+  "14:00 UTC",
+  "19:00 UTC"
+];
+
+const intervalTimes = [
+  "00:00 - 01:59 UTC",
+  "02:00 - 03:59 UTC",
+  "04:00 - 05:59 UTC",
+  "06:00 - 07:59 UTC",
+  "08:00 - 09:59 UTC",
+  "10:00 - 11:59 UTC",
+  "12:00 - 13:59 UTC",
+  "14:00 - 15:59 UTC",
+  "16:00 - 17:59 UTC",
+  "18:00 - 19:59 UTC",
+  "20:00 - 21:59 UTC",
+  "22:00 - 23:59 UTC"
+];
+
+function createCheckboxes(containerId, name, values){
+
+  const container = document.getElementById(containerId);
+
+  values.forEach(value => {
+
+    const item = document.createElement("label");
+
+    item.className = "checkbox-item";
+
+    item.innerHTML = `
+      <input type="checkbox" name="${name}" value="${value}">
+      ${value}
+    `;
+
+    container.appendChild(item);
+
+  });
+
+}
+
+createCheckboxes("canyonGroup", "canyon", canyonTimes);
+createCheckboxes("foundryGroup", "foundry", foundryTimes);
+createCheckboxes("btGroup", "bt", intervalTimes);
+createCheckboxes("cjGroup", "cj", intervalTimes);
+createCheckboxes("ccGroup", "cc", intervalTimes);
 
 const heroGrid = document.getElementById("heroGrid");
 
@@ -512,25 +512,25 @@ form.addEventListener("submit", function(e){
       document.getElementById("playerName").value,
 
     availability:
-      document.getElementById("generalAvailability").value,
+      document.getElementById("availability").value,
 
     timezone:
       document.getElementById("timezone").value,
 
     canyon:
-      getSelectedValues("canyon"),
+      getCheckedValues("canyon"),
 
     foundry:
-      getSelectedValues("foundry"),
+      getCheckedValues("foundry"),
 
     bt:
-      getSelectedValues("bt"),
+      getCheckedValues("bt"),
 
     cj:
-      getSelectedValues("cj"),
+      getCheckedValues("cj"),
 
     cc:
-      getSelectedValues("cc"),
+      getCheckedValues("cc"),
 
     heroes:{}
 
@@ -559,14 +559,13 @@ form.addEventListener("submit", function(e){
 
 });
 
-function getSelectedValues(id){
+function getCheckedValues(name){
 
-  const select =
-    document.getElementById(id);
-
-  return Array.from(select.selectedOptions)
-    .map(option => option.value)
-    .join(", ");
+  return Array.from(
+    document.querySelectorAll(`input[name="${name}"]:checked`)
+  )
+  .map(el => el.value)
+  .join(", ");
 
 }
 
