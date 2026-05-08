@@ -105,11 +105,6 @@
       outline:none;
     }
 
-    input:focus,
-    select:focus{
-      box-shadow:0 0 0 2px #60a5fa;
-    }
-
     .checkbox-grid{
       display:grid;
       grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
@@ -233,7 +228,19 @@
 
   </div>
 
-  <form id="warForm">
+  <!-- NETLIFY FORM -->
+  <form
+    id="warForm"
+    name="war-registration"
+    method="POST"
+    data-netlify="true"
+  >
+
+    <input
+      type="hidden"
+      name="form-name"
+      value="war-registration"
+    />
 
     <!-- PLAYER INFO -->
     <div class="section">
@@ -242,28 +249,46 @@
 
       <div class="field">
         <label>Player Name</label>
-        <input type="text" id="playerName" required>
+
+        <input
+          type="text"
+          id="playerName"
+          name="playerName"
+          required
+        >
       </div>
 
       <div class="field">
         <label>Alliance Name</label>
-        <input type="text" id="allianceName" value="WAR">
+
+        <input
+          type="text"
+          id="allianceName"
+          name="allianceName"
+          value="WAR"
+        >
       </div>
 
       <div class="field">
         <label>General Availability Time (UTC)</label>
+
         <input
           type="text"
           id="availability"
-          placeholder="Example: 16:00 - 22:00 UTC">
+          name="availability"
+          placeholder="Example: 16:00 - 22:00 UTC"
+        >
       </div>
 
       <div class="field">
         <label>Your Time Zone</label>
+
         <input
           type="text"
           id="timezone"
-          placeholder="Example: UTC+2">
+          name="timezone"
+          placeholder="Example: UTC+2"
+        >
       </div>
 
     </div>
@@ -336,22 +361,15 @@
 
     </div>
 
-    <button type="submit" id="submitBtn">
+    <button type="submit">
       🚀 Submit Registration
     </button>
-
-    <div class="success" id="successMessage">
-      ✅ Registration Submitted Successfully!
-    </div>
 
   </form>
 
 </div>
 
 <script>
-
-const SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbzcYFB9EeZYA8A2BsHs9ExwMCyNkhXXaZ0ucMLGDBUWMv_qJzh6Mp3x7kFOdtWO8Gyp/exec";
 
 const heroes = [
   "Reina",
@@ -410,9 +428,11 @@ function createCheckboxes(containerId, name, values){
     item.className = "checkbox-item";
 
     item.innerHTML = `
-      <input type="checkbox"
-      name="${name}"
-      value="${value}">
+      <input
+        type="checkbox"
+        name="${name}"
+        value="${value}"
+      >
       ${value}
     `;
 
@@ -461,7 +481,10 @@ heroes.forEach(hero => {
 
     <label>Joiner Skill Level</label>
 
-    <select id="${hero}">
+    <select
+      id="${hero}"
+      name="${hero}"
+    >
       <option value="1">1</option>
       <option value="2">2</option>
       <option value="3">3</option>
@@ -471,120 +494,6 @@ heroes.forEach(hero => {
   `;
 
   heroGrid.appendChild(card);
-
-});
-
-function getCheckedValues(name){
-
-  return Array.from(
-    document.querySelectorAll(
-      `input[name="${name}"]:checked`
-    )
-  )
-  .map(el => el.value)
-  .join(", ");
-
-}
-
-const form =
-  document.getElementById("warForm");
-
-form.addEventListener(
-  "submit",
-  async function(e){
-
-  e.preventDefault();
-
-  const submitButton =
-    document.getElementById("submitBtn");
-
-  submitButton.disabled = true;
-
-  submitButton.innerText =
-    "Submitting...";
-
-  const heroSkills = {};
-
-  heroes.forEach(hero => {
-
-    heroSkills[hero] =
-      document.getElementById(hero).value;
-
-  });
-
-  const data = {
-
-    player:
-      document.getElementById("playerName").value,
-
-    alliance:
-      document.getElementById("allianceName").value,
-
-    availability:
-      document.getElementById("availability").value,
-
-    timezone:
-      document.getElementById("timezone").value,
-
-    canyon:
-      getCheckedValues("canyon"),
-
-    foundry:
-      getCheckedValues("foundry"),
-
-    bt:
-      getCheckedValues("bt"),
-
-    cj:
-      getCheckedValues("cj"),
-
-    heroes:
-      JSON.stringify(heroSkills)
-
-  };
-
-  try{
-
-    await fetch(SCRIPT_URL, {
-
-      method:"POST",
-
-      body:JSON.stringify(data),
-
-      headers:{
-        "Content-Type":"application/json"
-      }
-
-    });
-
-    document
-      .getElementById("successMessage")
-      .style.display = "block";
-
-    form.reset();
-
-    setTimeout(() => {
-
-      document
-        .getElementById("successMessage")
-        .style.display = "none";
-
-    }, 4000);
-
-  }
-
-  catch(error){
-
-    console.error(error);
-
-    alert("Error submitting form.");
-
-  }
-
-  submitButton.disabled = false;
-
-  submitButton.innerText =
-    "🚀 Submit Registration";
 
 });
 
