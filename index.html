@@ -1,404 +1,624 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>WAR Alliance Registration</title>
+  <title>WAR Alliance Registration</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
 
-<style>
+  <style>
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
 
-body{
-  font-family:'Rajdhani', sans-serif;
-  background:
-  linear-gradient(rgba(5,10,20,0.92), rgba(5,10,20,0.95)),
-  url('https://images.unsplash.com/photo-1542751110-97427bbecf20?q=80&w=1600&auto=format&fit=crop');
-  background-size:cover;
-  background-attachment:fixed;
-  color:white;
-  padding:20px;
-}
+    body{
+      font-family:'Rajdhani', sans-serif;
+      background:
+      linear-gradient(rgba(5,10,20,0.92), rgba(5,10,20,0.95)),
+      url('https://images.unsplash.com/photo-1542751110-97427bbecf20?q=80&w=1600&auto=format&fit=crop');
+      background-size:cover;
+      background-attachment:fixed;
+      color:white;
+      padding:20px;
+    }
 
-.container{
-  max-width:1200px;
-  margin:auto;
-  background:rgba(15,23,42,0.94);
-  border-radius:24px;
-  overflow:hidden;
-  border:1px solid rgba(96,165,250,0.2);
-  box-shadow:
-  0 0 40px rgba(37,99,235,0.25),
-  0 0 80px rgba(0,0,0,0.6);
-}
+    .container{
+      max-width:1200px;
+      margin:auto;
+      background:rgba(15,23,42,0.94);
+      border-radius:24px;
+      overflow:hidden;
+      border:1px solid rgba(96,165,250,0.2);
+      box-shadow:
+      0 0 40px rgba(37,99,235,0.25),
+      0 0 80px rgba(0,0,0,0.6);
+      backdrop-filter:blur(8px);
+    }
 
-.topbar{
-  padding:15px 20px;
-  background:#0f172a;
-  text-align:right;
-}
+    .header{
+      padding:40px;
+      text-align:center;
+      background:
+      linear-gradient(135deg,#2563eb,#0f172a);
+    }
 
-.language-select{
-  padding:10px;
-  border-radius:10px;
-  border:none;
-  background:#334155;
-  color:white;
-  font-size:15px;
-}
+    .header h1{
+      font-family:'Orbitron', sans-serif;
+      font-size:42px;
+      letter-spacing:2px;
+      margin-bottom:12px;
+      text-shadow:0 0 20px rgba(96,165,250,0.8);
+    }
 
-.header{
-  padding:40px;
-  text-align:center;
-  background:
-  linear-gradient(135deg,#2563eb,#0f172a);
-}
+    .header p{
+      font-size:20px;
+      color:#dbeafe;
+    }
 
-.header h1{
-  font-family:'Orbitron', sans-serif;
-  font-size:42px;
-  margin-bottom:10px;
-}
+    form{
+      padding:30px;
+    }
 
-.header p{
-  font-size:20px;
-  color:#dbeafe;
-}
+    .section{
+      margin-bottom:35px;
+      padding:25px;
+      border-radius:20px;
+      background:rgba(30,41,59,0.9);
+      border:1px solid rgba(255,255,255,0.05);
+    }
 
-form{
-  padding:30px;
-}
+    .section h2{
+      font-family:'Orbitron', sans-serif;
+      color:#60a5fa;
+      margin-bottom:24px;
+      font-size:24px;
+      border-left:5px solid #3b82f6;
+      padding-left:14px;
+    }
 
-.section{
-  margin-bottom:35px;
-  padding:25px;
-  border-radius:20px;
-  background:rgba(30,41,59,0.9);
-}
+    .field{
+      margin-bottom:24px;
+    }
 
-.section h2{
-  color:#60a5fa;
-  margin-bottom:24px;
-  font-size:24px;
-}
+    label{
+      display:block;
+      margin-bottom:10px;
+      font-size:18px;
+      font-weight:600;
+      color:#e2e8f0;
+    }
 
-.field{
-  margin-bottom:22px;
-}
+    input,
+    select{
+      width:100%;
+      padding:14px;
+      border:none;
+      border-radius:12px;
+      background:#334155;
+      color:white;
+      font-size:16px;
+      outline:none;
+    }
 
-label{
-  display:block;
-  margin-bottom:10px;
-  font-size:18px;
-  font-weight:600;
-}
+    input:focus,
+    select:focus{
+      box-shadow:0 0 0 2px #60a5fa;
+    }
 
-input, select{
-  width:100%;
-  padding:14px;
-  border:none;
-  border-radius:12px;
-  background:#334155;
-  color:white;
-  font-size:16px;
-}
+    .checkbox-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:12px;
+      margin-top:12px;
+    }
 
-.checkbox-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:12px;
-  margin-top:12px;
-}
+    .checkbox-item{
+      background:#334155;
+      padding:12px 14px;
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      transition:0.3s;
+      border:1px solid rgba(255,255,255,0.05);
+      cursor:pointer;
+    }
 
-.checkbox-item{
-  background:#334155;
-  padding:12px;
-  border-radius:12px;
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
+    .checkbox-item:hover{
+      background:#3b4d66;
+      transform:translateY(-2px);
+    }
 
-.checkbox-item input{
-  width:auto;
-}
+    .checkbox-item input{
+      width:auto;
+      transform:scale(1.2);
+      cursor:pointer;
+    }
 
-.multi-note{
-  margin-top:10px;
-  color:#93c5fd;
-  font-size:14px;
-}
+    .multi-note{
+      margin-top:10px;
+      color:#93c5fd;
+      font-size:14px;
+      font-weight:600;
+    }
 
-.hero-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:18px;
-}
+    .hero-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:18px;
+    }
 
-.hero-card{
-  background:#334155;
-  border-radius:16px;
-  padding:18px;
-}
+    .hero-card{
+      background:
+      linear-gradient(145deg,#334155,#1e293b);
+      border-radius:16px;
+      padding:18px;
+      border:1px solid rgba(255,255,255,0.05);
+      transition:0.3s;
+    }
 
-.hero-card h3{
-  margin-bottom:14px;
-}
+    .hero-card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 0 20px rgba(59,130,246,0.4);
+    }
 
-button{
-  width:100%;
-  padding:18px;
-  border:none;
-  border-radius:14px;
-  background:#2563eb;
-  color:white;
-  font-size:22px;
-  cursor:pointer;
-}
+    .hero-card h3{
+      font-family:'Orbitron', sans-serif;
+      margin-bottom:14px;
+      font-size:17px;
+      color:#f8fafc;
+    }
 
-.success{
-  display:none;
-  margin-top:20px;
-  background:#15803d;
-  padding:16px;
-  border-radius:12px;
-  text-align:center;
-}
+    button{
+      width:100%;
+      padding:18px;
+      border:none;
+      border-radius:14px;
+      background:
+      linear-gradient(135deg,#2563eb,#1d4ed8);
+      color:white;
+      font-size:22px;
+      font-family:'Orbitron', sans-serif;
+      cursor:pointer;
+      transition:0.3s;
+      margin-top:10px;
+    }
 
-</style>
+    button:hover{
+      transform:translateY(-2px);
+      box-shadow:0 0 25px rgba(96,165,250,0.5);
+    }
+
+    .success{
+      display:none;
+      margin-top:20px;
+      background:#15803d;
+      padding:16px;
+      border-radius:12px;
+      text-align:center;
+      font-size:18px;
+      font-weight:bold;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin-top:20px;
+      overflow:auto;
+      display:block;
+    }
+
+    table th{
+      background:#2563eb;
+      padding:14px;
+      text-align:left;
+    }
+
+    table td{
+      background:#1e293b;
+      padding:12px;
+      border-bottom:1px solid rgba(255,255,255,0.05);
+    }
+
+    table tr:hover td{
+      background:#334155;
+    }
+
+    .note{
+      margin-top:20px;
+      text-align:center;
+      color:#cbd5e1;
+      line-height:1.6;
+    }
+
+    @media(max-width:768px){
+
+      .header h1{
+        font-size:28px;
+      }
+
+      .header p{
+        font-size:16px;
+      }
+
+      form{
+        padding:20px;
+      }
+
+      .section{
+        padding:18px;
+      }
+
+    }
+
+  </style>
 </head>
 
 <body>
 
 <div class="container">
 
-<div class="topbar">
+  <div class="header">
 
-<select class="language-select" id="languageSwitcher">
+    <h1>⚔ WAR ALLIANCE ⚔</h1>
 
-<option value="en">🇺🇸 English</option>
-<option value="ar">🇸🇦 العربية</option>
-<option value="ru">🇷🇺 Русский</option>
-<option value="tr">🇹🇷 Türkçe</option>
-<option value="es">🇪🇸 Español</option>
-<option value="fr">🇫🇷 Français</option>
-<option value="de">🇩🇪 Deutsch</option>
-<option value="pt">🇵🇹 Português</option>
-<option value="it">🇮🇹 Italiano</option>
-<option value="zh">🇨🇳 中文</option>
-<option value="ja">🇯🇵 日本語</option>
-<option value="ko">🇰🇷 한국어</option>
+    <p>
+      Event Availability & Joiner Hero Registration
+    </p>
 
-</select>
+  </div>
 
-</div>
+  <form id="warForm">
 
-<div class="header">
+    <!-- PLAYER INFO -->
+    <div class="section">
 
-<h1 id="title">⚔ WAR ALLIANCE ⚔</h1>
+      <h2>👤 Player Information</h2>
 
-<p id="subtitle">
-Event Availability & Joiner Hero Registration
-</p>
+      <div class="field">
+        <label>Player Name</label>
+        <input type="text" id="playerName" required>
+      </div>
 
-</div>
+      <div class="field">
+        <label>Alliance Name</label>
+        <input type="text" id="allianceName" value="WAR">
+      </div>
 
-<form>
+    </div>
 
-<div class="section">
+    <!-- EVENT TIMES -->
+    <div class="section">
 
-<h2 id="playerInfoTitle">Player Information</h2>
+      <h2>🕒 Event Preferences</h2>
 
-<div class="field">
-<label id="playerNameLabel">Player Name</label>
-<input type="text">
-</div>
+      <div class="field">
+        <label>General Availability Time (UTC)</label>
+        <input type="text" id="availability" placeholder="Example: 16:00 - 22:00 UTC">
+      </div>
 
-<div class="field">
-<label id="timezoneLabel">Your Time Zone</label>
-<input type="text">
-</div>
+      <div class="field">
+        <label>Your Time Zone</label>
+        <input type="text" id="timezone" placeholder="Example: UTC+2">
+      </div>
 
-</div>
+      <!-- Canyon -->
+      <div class="field">
 
-<div class="section">
+        <label>Canyon Times</label>
 
-<h2 id="eventTitle">Event Preferences</h2>
+        <div class="checkbox-grid" id="canyonGroup"></div>
 
-<div class="field">
+        <div class="multi-note">
+          ✅ Multiple selections allowed
+        </div>
 
-<label id="canyonLabel">Canyon Times</label>
+      </div>
 
-<div class="checkbox-grid">
+      <!-- Foundry -->
+      <div class="field">
 
-<label class="checkbox-item">
-<input type="checkbox"> 02:00 UTC
-</label>
+        <label>Foundry Times</label>
 
-<label class="checkbox-item">
-<input type="checkbox"> 12:00 UTC
-</label>
+        <div class="checkbox-grid" id="foundryGroup"></div>
 
-<label class="checkbox-item">
-<input type="checkbox"> 14:00 UTC
-</label>
+        <div class="multi-note">
+          ✅ Multiple selections allowed
+        </div>
 
-<label class="checkbox-item">
-<input type="checkbox"> 19:00 UTC
-</label>
+      </div>
 
-<label class="checkbox-item">
-<input type="checkbox"> 21:00 UTC
-</label>
+      <!-- BT -->
+      <div class="field">
 
-</div>
+        <label>BT Preferred Times</label>
 
-<div class="multi-note" id="multiNote1">
-✅ Multiple selections allowed
-</div>
+        <div class="checkbox-grid" id="btGroup"></div>
 
-</div>
+        <div class="multi-note">
+          ✅ Multiple selections allowed
+        </div>
 
-</div>
+      </div>
 
-<div class="section">
+      <!-- CJ -->
+      <div class="field">
 
-<h2 id="heroTitle">Joiner Hero Skill Levels</h2>
+        <label>CJ Preferred Times</label>
 
-<div class="hero-grid">
+        <div class="checkbox-grid" id="cjGroup"></div>
 
-<div class="hero-card">
-<h3>Reina</h3>
-<select>
-<option>1</option>
-<option>2</option>
-<option>3</option>
-<option>4</option>
-<option>5</option>
-</select>
-</div>
+        <div class="multi-note">
+          ✅ Multiple selections allowed
+        </div>
 
-<div class="hero-card">
-<h3>Jessie</h3>
-<select>
-<option>1</option>
-<option>2</option>
-<option>3</option>
-<option>4</option>
-<option>5</option>
-</select>
-</div>
+      </div>
 
-<div class="hero-card">
-<h3>Patrick</h3>
-<select>
-<option>1</option>
-<option>2</option>
-<option>3</option>
-<option>4</option>
-<option>5</option>
-</select>
-</div>
+    </div>
 
-</div>
+    <!-- HEROES -->
+    <div class="section">
 
-</div>
+      <h2>🛡 Joiner Hero Skill Levels</h2>
 
-<button id="submitBtn">
-🚀 Submit Registration
-</button>
+      <div class="hero-grid" id="heroGrid"></div>
 
-<div class="success" id="successMessage">
-✅ Registration Submitted Successfully!
-</div>
+    </div>
 
-</form>
+    <button type="submit">
+      🚀 Submit Registration
+    </button>
+
+    <div class="success" id="successMessage">
+      ✅ Registration Submitted Successfully!
+    </div>
+
+  </form>
+
+  <!-- TABLE -->
+  <div class="section">
+
+    <h2>📋 Submitted Entries</h2>
+
+    <table id="dataTable">
+
+      <thead>
+        <tr>
+          <th>Player</th>
+          <th>Availability</th>
+          <th>Timezone</th>
+          <th>Canyon</th>
+          <th>Foundry</th>
+          <th>BT</th>
+          <th>CJ</th>
+        </tr>
+      </thead>
+
+      <tbody></tbody>
+
+    </table>
+
+    <p class="note">
+      Data currently stored in browser local storage.<br>
+      Can later connect to Google Sheets or Firebase.
+    </p>
+
+  </div>
 
 </div>
 
 <script>
 
-const translations = {
+const heroes = [
+  "Reina",
+  "Jessie",
+  "Patrick",
+  "Seo Yoon",
+  "Jasser",
+  "Philly",
+  "Lumak",
+  "Mia",
+  "Ling Zue",
+  "Sergey",
+  "Zinmann"
+];
 
-en: {
-  subtitle: "Event Availability & Joiner Hero Registration",
-  playerInfoTitle: "Player Information",
-  playerNameLabel: "Player Name",
-  timezoneLabel: "Your Time Zone",
-  eventTitle: "Event Preferences",
-  canyonLabel: "Canyon Times",
-  multiNote1: "✅ Multiple selections allowed",
-  heroTitle: "Joiner Hero Skill Levels",
-  submitBtn: "🚀 Submit Registration"
-},
+const canyonTimes = [
+  "02:00 UTC",
+  "12:00 UTC",
+  "14:00 UTC",
+  "19:00 UTC",
+  "21:00 UTC"
+];
 
-ar: {
-  subtitle: "تسجيل أوقات الأحداث ومستويات الأبطال",
-  playerInfoTitle: "معلومات اللاعب",
-  playerNameLabel: "اسم اللاعب",
-  timezoneLabel: "المنطقة الزمنية",
-  eventTitle: "تفضيلات الأحداث",
-  canyonLabel: "أوقات الكانيون",
-  multiNote1: "✅ يمكن اختيار عدة خيارات",
-  heroTitle: "مستويات مهارات الأبطال",
-  submitBtn: "🚀 إرسال التسجيل"
-},
+const foundryTimes = [
+  "02:00 UTC",
+  "12:00 UTC",
+  "14:00 UTC",
+  "19:00 UTC"
+];
 
-ru: {
-  subtitle: "Регистрация времени событий и героев",
-  playerInfoTitle: "Информация игрока",
-  playerNameLabel: "Имя игрока",
-  timezoneLabel: "Ваш часовой пояс",
-  eventTitle: "Настройки событий",
-  canyonLabel: "Время Canyon",
-  multiNote1: "✅ Можно выбрать несколько вариантов",
-  heroTitle: "Уровни навыков героев",
-  submitBtn: "🚀 Отправить"
-},
+const intervalTimes = [
+  "00:00 - 01:59 UTC",
+  "02:00 - 03:59 UTC",
+  "04:00 - 05:59 UTC",
+  "06:00 - 07:59 UTC",
+  "08:00 - 09:59 UTC",
+  "10:00 - 11:59 UTC",
+  "12:00 - 13:59 UTC",
+  "14:00 - 15:59 UTC",
+  "16:00 - 17:59 UTC",
+  "18:00 - 19:59 UTC",
+  "20:00 - 21:59 UTC",
+  "22:00 - 23:59 UTC"
+];
 
-tr: {
-  subtitle: "Etkinlik Zamanı ve Kahraman Kayıt Formu",
-  playerInfoTitle: "Oyuncu Bilgileri",
-  playerNameLabel: "Oyuncu Adı",
-  timezoneLabel: "Saat Diliminiz",
-  eventTitle: "Etkinlik Tercihleri",
-  canyonLabel: "Canyon Saatleri",
-  multiNote1: "✅ Birden fazla seçim yapılabilir",
-  heroTitle: "Kahraman Beceri Seviyeleri",
-  submitBtn: "🚀 Kaydı Gönder"
-}
+function createCheckboxes(containerId, name, values){
 
-};
+  const container = document.getElementById(containerId);
 
-document.getElementById("languageSwitcher")
-.addEventListener("change", function(){
+  values.forEach(value => {
 
-const lang = this.value;
+    const item = document.createElement("label");
 
-if(translations[lang]){
+    item.className = "checkbox-item";
 
-Object.keys(translations[lang]).forEach(id => {
+    item.innerHTML = `
+      <input type="checkbox" name="${name}" value="${value}">
+      ${value}
+    `;
 
-const el = document.getElementById(id);
+    container.appendChild(item);
 
-if(el){
-
-el.innerText = translations[lang][id];
+  });
 
 }
+
+createCheckboxes("canyonGroup", "canyon", canyonTimes);
+createCheckboxes("foundryGroup", "foundry", foundryTimes);
+createCheckboxes("btGroup", "bt", intervalTimes);
+createCheckboxes("cjGroup", "cj", intervalTimes);
+
+const heroGrid = document.getElementById("heroGrid");
+
+heroes.forEach(hero => {
+
+  const card = document.createElement("div");
+
+  card.className = "hero-card";
+
+  card.innerHTML = `
+    <h3>${hero}</h3>
+
+    <label>Joiner Skill Level</label>
+
+    <select id="${hero}">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+  `;
+
+  heroGrid.appendChild(card);
 
 });
 
-}
+const form = document.getElementById("warForm");
+const tableBody = document.querySelector("#dataTable tbody");
+
+loadEntries();
+
+form.addEventListener("submit", function(e){
+
+  e.preventDefault();
+
+  const entry = {
+
+    player:
+      document.getElementById("playerName").value,
+
+    availability:
+      document.getElementById("availability").value,
+
+    timezone:
+      document.getElementById("timezone").value,
+
+    canyon:
+      getCheckedValues("canyon"),
+
+    foundry:
+      getCheckedValues("foundry"),
+
+    bt:
+      getCheckedValues("bt"),
+
+    cj:
+      getCheckedValues("cj"),
+
+    heroes:{}
+
+  };
+
+  heroes.forEach(hero => {
+
+    entry.heroes[hero] =
+      document.getElementById(hero).value;
+
+  });
+
+  saveEntry(entry);
+
+  addRow(entry);
+
+  document.getElementById("successMessage").style.display = "block";
+
+  form.reset();
+
+  setTimeout(() => {
+
+    document.getElementById("successMessage").style.display = "none";
+
+  }, 3000);
 
 });
+
+function getCheckedValues(name){
+
+  return Array.from(
+    document.querySelectorAll(`input[name="${name}"]:checked`)
+  )
+  .map(el => el.value)
+  .join(", ");
+
+}
+
+function saveEntry(entry){
+
+  let entries =
+    JSON.parse(localStorage.getItem("warEntries")) || [];
+
+  entries.push(entry);
+
+  localStorage.setItem(
+    "warEntries",
+    JSON.stringify(entries)
+  );
+
+}
+
+function loadEntries(){
+
+  let entries =
+    JSON.parse(localStorage.getItem("warEntries")) || [];
+
+  entries.forEach(entry => addRow(entry));
+
+}
+
+function addRow(entry){
+
+  const row = document.createElement("tr");
+
+  row.innerHTML = `
+    <td>${entry.player}</td>
+    <td>${entry.availability}</td>
+    <td>${entry.timezone}</td>
+    <td>${entry.canyon}</td>
+    <td>${entry.foundry}</td>
+    <td>${entry.bt}</td>
+    <td>${entry.cj}</td>
+  `;
+
+  tableBody.appendChild(row);
+
+}
 
 </script>
 
