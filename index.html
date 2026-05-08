@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>WAR Alliance Registration</title>
+  <title>WAR Alliance Roster</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
 
@@ -82,12 +82,12 @@
     }
 
     .field{
-      margin-bottom:22px;
+      margin-bottom:24px;
     }
 
     label{
       display:block;
-      margin-bottom:8px;
+      margin-bottom:10px;
       font-size:18px;
       font-weight:600;
       color:#e2e8f0;
@@ -126,6 +126,7 @@
       gap:10px;
       transition:0.3s;
       border:1px solid rgba(255,255,255,0.05);
+      cursor:pointer;
     }
 
     .checkbox-item:hover{
@@ -135,8 +136,15 @@
 
     .checkbox-item input{
       width:auto;
-      transform:scale(1.3);
+      transform:scale(1.2);
       cursor:pointer;
+    }
+
+    .multi-note{
+      margin-top:10px;
+      color:#93c5fd;
+      font-size:14px;
+      font-weight:600;
     }
 
     .hero-grid{
@@ -306,6 +314,10 @@
 
         <div class="checkbox-grid" id="canyonGroup"></div>
 
+        <div class="multi-note">
+          ✅ Multiple selections allowed
+        </div>
+
       </div>
 
       <!-- Foundry -->
@@ -314,6 +326,10 @@
         <label>Foundry Times</label>
 
         <div class="checkbox-grid" id="foundryGroup"></div>
+
+        <div class="multi-note">
+          ✅ Multiple selections allowed
+        </div>
 
       </div>
 
@@ -324,6 +340,10 @@
 
         <div class="checkbox-grid" id="btGroup"></div>
 
+        <div class="multi-note">
+          ✅ Multiple selections allowed
+        </div>
+
       </div>
 
       <!-- CJ -->
@@ -333,14 +353,9 @@
 
         <div class="checkbox-grid" id="cjGroup"></div>
 
-      </div>
-
-      <!-- CC -->
-      <div class="field">
-
-        <label>CC Preferred Times</label>
-
-        <div class="checkbox-grid" id="ccGroup"></div>
+        <div class="multi-note">
+          ✅ Multiple selections allowed
+        </div>
 
       </div>
 
@@ -381,7 +396,6 @@
           <th>Foundry</th>
           <th>BT</th>
           <th>CJ</th>
-          <th>CC</th>
         </tr>
       </thead>
 
@@ -469,7 +483,6 @@ createCheckboxes("canyonGroup", "canyon", canyonTimes);
 createCheckboxes("foundryGroup", "foundry", foundryTimes);
 createCheckboxes("btGroup", "bt", intervalTimes);
 createCheckboxes("cjGroup", "cj", intervalTimes);
-createCheckboxes("ccGroup", "cc", intervalTimes);
 
 const heroGrid = document.getElementById("heroGrid");
 
@@ -528,9 +541,6 @@ form.addEventListener("submit", function(e){
 
     cj:
       getCheckedValues("cj"),
-
-    cc:
-      getCheckedValues("cc"),
 
     heroes:{}
 
@@ -604,7 +614,6 @@ function addRow(entry){
     <td>${entry.foundry}</td>
     <td>${entry.bt}</td>
     <td>${entry.cj}</td>
-    <td>${entry.cc}</td>
   `;
 
   tableBody.appendChild(row);
