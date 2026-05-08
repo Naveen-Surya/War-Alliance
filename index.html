@@ -124,9 +124,9 @@
       display:flex;
       align-items:center;
       gap:10px;
-      transition:0.3s;
       border:1px solid rgba(255,255,255,0.05);
       cursor:pointer;
+      transition:0.3s;
     }
 
     .checkbox-item:hover{
@@ -137,7 +137,6 @@
     .checkbox-item input{
       width:auto;
       transform:scale(1.2);
-      cursor:pointer;
     }
 
     .multi-note{
@@ -159,19 +158,12 @@
       border-radius:16px;
       padding:18px;
       border:1px solid rgba(255,255,255,0.05);
-      transition:0.3s;
-    }
-
-    .hero-card:hover{
-      transform:translateY(-4px);
-      box-shadow:0 0 20px rgba(59,130,246,0.4);
     }
 
     .hero-card h3{
-      font-family:'Orbitron', sans-serif;
       margin-bottom:14px;
-      font-size:17px;
       color:#f8fafc;
+      font-size:17px;
     }
 
     button{
@@ -186,7 +178,6 @@
       font-family:'Orbitron', sans-serif;
       cursor:pointer;
       transition:0.3s;
-      margin-top:10px;
     }
 
     button:hover{
@@ -203,37 +194,6 @@
       text-align:center;
       font-size:18px;
       font-weight:bold;
-    }
-
-    table{
-      width:100%;
-      border-collapse:collapse;
-      margin-top:20px;
-      overflow:auto;
-      display:block;
-    }
-
-    table th{
-      background:#2563eb;
-      padding:14px;
-      text-align:left;
-    }
-
-    table td{
-      background:#1e293b;
-      padding:12px;
-      border-bottom:1px solid rgba(255,255,255,0.05);
-    }
-
-    table tr:hover td{
-      background:#334155;
-    }
-
-    .note{
-      margin-top:20px;
-      text-align:center;
-      color:#cbd5e1;
-      line-height:1.6;
     }
 
     @media(max-width:768px){
@@ -290,22 +250,28 @@
         <input type="text" id="allianceName" value="WAR">
       </div>
 
+      <div class="field">
+        <label>General Availability Time (UTC)</label>
+        <input
+          type="text"
+          id="availability"
+          placeholder="Example: 16:00 - 22:00 UTC">
+      </div>
+
+      <div class="field">
+        <label>Your Time Zone</label>
+        <input
+          type="text"
+          id="timezone"
+          placeholder="Example: UTC+2">
+      </div>
+
     </div>
 
     <!-- EVENT TIMES -->
     <div class="section">
 
       <h2>🕒 Event Preferences</h2>
-
-      <div class="field">
-        <label>General Availability Time (UTC)</label>
-        <input type="text" id="availability" placeholder="Example: 16:00 - 22:00 UTC">
-      </div>
-
-      <div class="field">
-        <label>Your Time Zone</label>
-        <input type="text" id="timezone" placeholder="Example: UTC+2">
-      </div>
 
       <!-- Canyon -->
       <div class="field">
@@ -370,7 +336,7 @@
 
     </div>
 
-    <button type="submit">
+    <button type="submit" id="submitBtn">
       🚀 Submit Registration
     </button>
 
@@ -380,39 +346,12 @@
 
   </form>
 
-  <!-- TABLE -->
-  <div class="section">
-
-    <h2>📋 Submitted Entries</h2>
-
-    <table id="dataTable">
-
-      <thead>
-        <tr>
-          <th>Player</th>
-          <th>Availability</th>
-          <th>Timezone</th>
-          <th>Canyon</th>
-          <th>Foundry</th>
-          <th>BT</th>
-          <th>CJ</th>
-        </tr>
-      </thead>
-
-      <tbody></tbody>
-
-    </table>
-
-    <p class="note">
-      Data currently stored in browser local storage.<br>
-      Can later connect to Google Sheets or Firebase.
-    </p>
-
-  </div>
-
 </div>
 
 <script>
+
+const SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbzJ1OD-5FvXUqDJC-eS7Rip775JyHxpQzYEWAH6EIflqhTDxnGLF3LVFsik4pEBUcBI/exec";
 
 const heroes = [
   "Reina",
@@ -460,16 +399,20 @@ const intervalTimes = [
 
 function createCheckboxes(containerId, name, values){
 
-  const container = document.getElementById(containerId);
+  const container =
+    document.getElementById(containerId);
 
   values.forEach(value => {
 
-    const item = document.createElement("label");
+    const item =
+      document.createElement("label");
 
     item.className = "checkbox-item";
 
     item.innerHTML = `
-      <input type="checkbox" name="${name}" value="${value}">
+      <input type="checkbox"
+      name="${name}"
+      value="${value}">
       ${value}
     `;
 
@@ -479,16 +422,37 @@ function createCheckboxes(containerId, name, values){
 
 }
 
-createCheckboxes("canyonGroup", "canyon", canyonTimes);
-createCheckboxes("foundryGroup", "foundry", foundryTimes);
-createCheckboxes("btGroup", "bt", intervalTimes);
-createCheckboxes("cjGroup", "cj", intervalTimes);
+createCheckboxes(
+  "canyonGroup",
+  "canyon",
+  canyonTimes
+);
 
-const heroGrid = document.getElementById("heroGrid");
+createCheckboxes(
+  "foundryGroup",
+  "foundry",
+  foundryTimes
+);
+
+createCheckboxes(
+  "btGroup",
+  "bt",
+  intervalTimes
+);
+
+createCheckboxes(
+  "cjGroup",
+  "cj",
+  intervalTimes
+);
+
+const heroGrid =
+  document.getElementById("heroGrid");
 
 heroes.forEach(hero => {
 
-  const card = document.createElement("div");
+  const card =
+    document.createElement("div");
 
   card.className = "hero-card";
 
@@ -510,19 +474,51 @@ heroes.forEach(hero => {
 
 });
 
-const form = document.getElementById("warForm");
-const tableBody = document.querySelector("#dataTable tbody");
+function getCheckedValues(name){
 
-loadEntries();
+  return Array.from(
+    document.querySelectorAll(
+      `input[name="${name}"]:checked`
+    )
+  )
+  .map(el => el.value)
+  .join(", ");
 
-form.addEventListener("submit", function(e){
+}
+
+const form =
+  document.getElementById("warForm");
+
+form.addEventListener(
+  "submit",
+  async function(e){
 
   e.preventDefault();
 
-  const entry = {
+  const submitButton =
+    document.getElementById("submitBtn");
+
+  submitButton.disabled = true;
+
+  submitButton.innerText =
+    "Submitting...";
+
+  const heroSkills = {};
+
+  heroes.forEach(hero => {
+
+    heroSkills[hero] =
+      document.getElementById(hero).value;
+
+  });
+
+  const data = {
 
     player:
       document.getElementById("playerName").value,
+
+    alliance:
+      document.getElementById("allianceName").value,
 
     availability:
       document.getElementById("availability").value,
@@ -542,83 +538,55 @@ form.addEventListener("submit", function(e){
     cj:
       getCheckedValues("cj"),
 
-    heroes:{}
+    heroes:
+      JSON.stringify(heroSkills)
 
   };
 
-  heroes.forEach(hero => {
+  try{
 
-    entry.heroes[hero] =
-      document.getElementById(hero).value;
+    await fetch(SCRIPT_URL, {
 
-  });
+      method:"POST",
 
-  saveEntry(entry);
+      body:JSON.stringify(data),
 
-  addRow(entry);
+      headers:{
+        "Content-Type":"application/json"
+      }
 
-  document.getElementById("successMessage").style.display = "block";
+    });
 
-  form.reset();
+    document
+      .getElementById("successMessage")
+      .style.display = "block";
 
-  setTimeout(() => {
+    form.reset();
 
-    document.getElementById("successMessage").style.display = "none";
+    setTimeout(() => {
 
-  }, 3000);
+      document
+        .getElementById("successMessage")
+        .style.display = "none";
+
+    }, 4000);
+
+  }
+
+  catch(error){
+
+    console.error(error);
+
+    alert("Error submitting form.");
+
+  }
+
+  submitButton.disabled = false;
+
+  submitButton.innerText =
+    "🚀 Submit Registration";
 
 });
-
-function getCheckedValues(name){
-
-  return Array.from(
-    document.querySelectorAll(`input[name="${name}"]:checked`)
-  )
-  .map(el => el.value)
-  .join(", ");
-
-}
-
-function saveEntry(entry){
-
-  let entries =
-    JSON.parse(localStorage.getItem("warEntries")) || [];
-
-  entries.push(entry);
-
-  localStorage.setItem(
-    "warEntries",
-    JSON.stringify(entries)
-  );
-
-}
-
-function loadEntries(){
-
-  let entries =
-    JSON.parse(localStorage.getItem("warEntries")) || [];
-
-  entries.forEach(entry => addRow(entry));
-
-}
-
-function addRow(entry){
-
-  const row = document.createElement("tr");
-
-  row.innerHTML = `
-    <td>${entry.player}</td>
-    <td>${entry.availability}</td>
-    <td>${entry.timezone}</td>
-    <td>${entry.canyon}</td>
-    <td>${entry.foundry}</td>
-    <td>${entry.bt}</td>
-    <td>${entry.cj}</td>
-  `;
-
-  tableBody.appendChild(row);
-
-}
 
 </script>
 
