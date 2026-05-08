@@ -27,6 +27,26 @@
       padding:20px;
     }
 
+    #google_translate_element{
+      text-align:right;
+      margin-bottom:15px;
+    }
+
+    .goog-te-gadget{
+      color:white !important;
+      font-family:'Rajdhani', sans-serif !important;
+    }
+
+    .goog-te-combo{
+      padding:10px;
+      border-radius:10px;
+      background:#334155;
+      color:white;
+      border:none;
+      font-size:15px;
+      cursor:pointer;
+    }
+
     .container{
       max-width:1200px;
       margin:auto;
@@ -260,6 +280,8 @@
 </head>
 
 <body>
+
+<div id="google_translate_element"></div>
 
 <div class="container">
 
@@ -620,6 +642,21 @@ function addRow(entry){
 
 }
 
+</script>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement(
+    {
+      pageLanguage: 'en'
+    },
+    'google_translate_element'
+  );
+}
+</script>
+
+<script type="text/javascript"
+src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
 </script>
 
 </body>
