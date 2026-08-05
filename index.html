@@ -1,540 +1,1652 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>WAR Alliance Roster</title>
+<meta charset="UTF-8">
 
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
-  <style>
+<title>SVS Prep Registration</title>
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
+<link rel="preconnect"
+      href="https://fonts.googleapis.com">
 
-    body{
-      font-family:'Rajdhani', sans-serif;
-      background:
-      linear-gradient(rgba(5,10,20,0.92), rgba(5,10,20,0.95)),
-      url('https://images.unsplash.com/photo-1542751110-97427bbecf20?q=80&w=1600&auto=format&fit=crop');
-      background-size:cover;
-      background-attachment:fixed;
-      color:white;
-      padding:20px;
-    }
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
 
-    .container{
-      max-width:1200px;
-      margin:auto;
-      background:rgba(15,23,42,0.94);
-      border-radius:24px;
-      overflow:hidden;
-      border:1px solid rgba(96,165,250,0.2);
-      box-shadow:
-      0 0 40px rgba(37,99,235,0.25),
-      0 0 80px rgba(0,0,0,0.6);
-    }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet">
 
-    .header{
-      padding:40px;
-      text-align:center;
-      background:
-      linear-gradient(135deg,#2563eb,#0f172a);
-    }
+<style>
 
-    .header h1{
-      font-family:'Orbitron', sans-serif;
-      font-size:42px;
-      letter-spacing:2px;
-      margin-bottom:12px;
-    }
+/***************************************************
+*
+* RESET
+*
+****************************************************/
 
-    .header p{
-      font-size:20px;
-      color:#dbeafe;
-    }
+*{
 
-    form{
-      padding:30px;
-    }
+    margin:0;
 
-    .section{
-      margin-bottom:35px;
-      padding:25px;
-      border-radius:20px;
-      background:rgba(30,41,59,0.9);
-    }
+    padding:0;
 
-    .section h2{
-      font-family:'Orbitron', sans-serif;
-      color:#60a5fa;
-      margin-bottom:24px;
-      font-size:24px;
-      border-left:5px solid #3b82f6;
-      padding-left:14px;
-    }
+    box-sizing:border-box;
 
-    .field{
-      margin-bottom:24px;
-    }
+}
 
-    label{
-      display:block;
-      margin-bottom:10px;
-      font-size:18px;
-      font-weight:600;
-      color:#e2e8f0;
-    }
+/***************************************************
+*
+* ROOT COLORS
+*
+****************************************************/
 
-    input,
-    select{
-      width:100%;
-      padding:14px;
-      border:none;
-      border-radius:12px;
-      background:#334155;
-      color:white;
-      font-size:16px;
-      outline:none;
-    }
+:root{
 
-    .checkbox-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-      gap:12px;
-      margin-top:12px;
-    }
+    --primary:#2563eb;
 
-    .checkbox-item{
-      background:#334155;
-      padding:12px 14px;
-      border-radius:12px;
-      display:flex;
-      align-items:center;
-      gap:10px;
-      cursor:pointer;
-    }
+    --secondary:#4f46e5;
 
-    .checkbox-item input{
-      width:auto;
-      transform:scale(1.2);
-    }
+    --purple:#7c3aed;
 
-    .multi-note{
-      margin-top:10px;
-      color:#93c5fd;
-      font-size:14px;
-      font-weight:600;
-    }
+    --orange:#f97316;
 
-    .hero-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-      gap:18px;
-    }
+    --cyan:#06b6d4;
 
-    .hero-card{
-      background:#334155;
-      border-radius:16px;
-      padding:18px;
-    }
+    --green:#22c55e;
 
-    .hero-card h3{
-      margin-bottom:14px;
-      color:#f8fafc;
-    }
+    --red:#ef4444;
 
-    button{
-      width:100%;
-      padding:18px;
-      border:none;
-      border-radius:14px;
-      background:
-      linear-gradient(135deg,#2563eb,#1d4ed8);
-      color:white;
-      font-size:22px;
-      font-family:'Orbitron', sans-serif;
-      cursor:pointer;
-    }
+    --yellow:#facc15;
 
-    button:hover{
-      opacity:0.9;
-    }
+    --text:#0f172a;
 
-    @media(max-width:768px){
+    --light:#f8fafc;
 
-      .header h1{
-        font-size:28px;
-      }
+    --border:#dbe5ef;
 
-      .header p{
-        font-size:16px;
-      }
+}
 
-      form{
-        padding:20px;
-      }
+/***************************************************
+*
+* BODY
+*
+****************************************************/
 
-    }
+body{
 
-  </style>
+    font-family:'Poppins',sans-serif;
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #020617,
+        #111827,
+        #1e293b
+    );
+
+    min-height:100vh;
+
+    padding:35px;
+
+}
+
+/***************************************************
+*
+* MAIN CONTAINER
+*
+****************************************************/
+
+.container{
+
+    max-width:1300px;
+
+    margin:auto;
+
+    background:white;
+
+    border-radius:28px;
+
+    overflow:hidden;
+
+    box-shadow:
+
+    0 25px 70px
+    rgba(0,0,0,.35);
+
+}
+
+/***************************************************
+*
+* HERO
+*
+****************************************************/
+
+.hero{
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #2563eb,
+        #4f46e5,
+        #7c3aed
+    );
+
+    color:white;
+
+    padding:70px 40px;
+
+    text-align:center;
+
+}
+
+.hero::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:600px;
+
+    height:600px;
+
+    border-radius:50%;
+
+    background:
+
+    rgba(255,255,255,.08);
+
+    right:-180px;
+
+    top:-220px;
+
+}
+
+.hero h1{
+
+    position:relative;
+
+    z-index:5;
+
+    font-size:54px;
+
+    font-weight:800;
+
+    letter-spacing:1px;
+
+    margin-bottom:15px;
+
+}
+
+.hero p{
+
+    position:relative;
+
+    z-index:5;
+
+    font-size:20px;
+
+    opacity:.95;
+
+}
+
+/***************************************************
+*
+* FORM
+*
+****************************************************/
+
+form{
+
+    padding:40px;
+
+}
+
+.section{
+
+    background:#f8fafc;
+
+    border:2px solid var(--border);
+
+    border-radius:24px;
+
+    padding:30px;
+
+    margin-bottom:30px;
+
+}
+
+.section h2{
+
+    color:var(--primary);
+
+    font-size:30px;
+
+    margin-bottom:28px;
+
+    font-weight:800;
+
+}
+
+/***************************************************
+*
+* FIELDS
+*
+****************************************************/
+
+.field{
+
+    margin-bottom:24px;
+
+}
+
+label{
+
+    display:block;
+
+    margin-bottom:10px;
+
+    font-weight:700;
+
+    color:var(--text);
+
+    font-size:16px;
+
+}
+
+input,
+select{
+
+    width:100%;
+
+    padding:16px;
+
+    border-radius:16px;
+
+    border:2px solid #d7dee8;
+
+    font-size:16px;
+
+    font-family:'Poppins',sans-serif;
+
+    transition:.25s;
+
+}
+
+input:focus,
+select:focus{
+
+    outline:none;
+
+    border-color:var(--primary);
+
+    box-shadow:
+
+    0 0 0 5px
+
+    rgba(37,99,235,.12);
+
+}
+/***************************************************
+*
+* RESOURCE CARDS
+*
+****************************************************/
+
+.resource-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:25px;
+
+    margin-top:25px;
+
+}
+
+.resource-card{
+
+    position:relative;
+
+    background:white;
+
+    border-radius:24px;
+
+    padding:28px;
+
+    border:2px solid #e2e8f0;
+
+    transition:.30s;
+
+    overflow:hidden;
+
+}
+
+.resource-card:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:
+
+    0 18px 35px
+
+    rgba(0,0,0,.12);
+
+}
+
+.resource-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    top:0;
+
+    width:100%;
+
+    height:8px;
+
+}
+
+.orange::after{
+
+    background:#f97316;
+
+}
+
+.purple::after{
+
+    background:#7c3aed;
+
+}
+
+.cyan::after{
+
+    background:#06b6d4;
+
+}
+
+.green::after{
+
+    background:#22c55e;
+
+}
+
+.red::after{
+
+    background:#ef4444;
+
+}
+
+.blue::after{
+
+    background:#2563eb;
+
+}
+
+.resource-icon{
+
+    font-size:46px;
+
+    margin-bottom:14px;
+
+}
+
+.resource-title{
+
+    font-size:23px;
+
+    font-weight:800;
+
+    color:#0f172a;
+
+    margin-bottom:6px;
+
+}
+
+.resource-sub{
+
+    font-size:14px;
+
+    color:#64748b;
+
+    margin-bottom:22px;
+
+    line-height:1.5;
+
+}
+
+.resource-card input{
+
+    font-size:18px;
+
+    font-weight:600;
+
+}
+
+/***************************************************
+*
+* SCORE PANEL
+*
+****************************************************/
+
+.score-panel{
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #1e3a8a,
+        #312e81
+    );
+
+    color:white;
+
+    border-radius:28px;
+
+    padding:35px;
+
+    margin-top:30px;
+
+}
+
+.score-panel h2{
+
+    color:white;
+
+    margin-bottom:20px;
+
+}
+
+.total-score{
+
+    font-size:54px;
+
+    font-weight:800;
+
+    margin-top:12px;
+
+    margin-bottom:20px;
+
+}
+
+.score-label{
+
+    opacity:.8;
+
+    font-size:18px;
+
+}
+
+/***************************************************
+*
+* PROGRESS BAR
+*
+****************************************************/
+
+.progress{
+
+    width:100%;
+
+    height:22px;
+
+    background:
+
+    rgba(255,255,255,.18);
+
+    border-radius:50px;
+
+    overflow:hidden;
+
+    margin:25px 0;
+
+}
+
+.progress-fill{
+
+    width:0%;
+
+    height:100%;
+
+    border-radius:50px;
+
+    transition:.6s;
+
+    background:
+
+    linear-gradient(
+        90deg,
+        #22c55e,
+        #84cc16
+    );
+
+}
+
+.rating{
+
+    display:inline-block;
+
+    padding:12px 20px;
+
+    border-radius:50px;
+
+    background:
+
+    rgba(255,255,255,.12);
+
+    font-size:18px;
+
+    font-weight:700;
+
+}
+
+/***************************************************
+*
+* WARNING BOX
+*
+****************************************************/
+
+.warning-note{
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #fff7ed,
+        #fffbeb
+    );
+
+    border-left:6px solid #f59e0b;
+
+    border-radius:18px;
+
+    padding:22px;
+
+    color:#92400e;
+
+    font-weight:600;
+
+    line-height:1.7;
+
+    margin-bottom:25px;
+
+}
+
+/***************************************************
+*
+* AVAILABILITY TILES
+*
+****************************************************/
+
+.checkbox-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+
+    gap:16px;
+
+}
+
+.checkbox-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    background:white;
+
+    border:2px solid #dbe5ef;
+
+    border-radius:18px;
+
+    padding:18px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    font-weight:600;
+
+}
+
+.checkbox-item:hover{
+
+    border-color:#2563eb;
+
+    background:#eff6ff;
+
+    transform:translateY(-2px);
+
+}
+
+.checkbox-item input{
+
+    width:auto;
+
+    transform:scale(1.3);
+
+    accent-color:#2563eb;
+
+}
+
+/***************************************************
+*
+* BUTTON
+*
+****************************************************/
+
+.submit-btn{
+
+    width:100%;
+
+    padding:24px;
+
+    border:none;
+
+    border-radius:22px;
+
+    cursor:pointer;
+
+    color:white;
+
+    font-size:24px;
+
+    font-weight:800;
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #2563eb,
+        #4f46e5
+    );
+
+    transition:.30s;
+
+}
+
+.submit-btn:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+
+    0 20px 40px
+
+    rgba(37,99,235,.35);
+
+}
+
+/***************************************************
+*
+* FOOTER
+*
+****************************************************/
+
+.footer{
+
+    text-align:center;
+
+    margin-top:25px;
+
+    color:#64748b;
+
+}
+
+/***************************************************
+*
+* MOBILE
+*
+****************************************************/
+
+@media(max-width:1000px){
+
+.resource-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.hero h1{
+
+font-size:38px;
+
+}
+
+.hero{
+
+padding:45px 25px;
+
+}
+
+form{
+
+padding:20px;
+
+}
+
+.section{
+
+padding:20px;
+
+}
+
+body{
+
+padding:12px;
+
+}
+
+}
+
+</style>
 </head>
 
 <body>
 
 <div class="container">
 
-  <div class="header">
+    <!-- ==========================================
+                 HERO SECTION
+    =========================================== -->
 
-    <h1>⚔ WAR ALLIANCE ⚔</h1>
+    <div class="hero">
 
-    <p>
-      Event Availability & Joiner Hero Registration
-    </p>
+        <h1>🔥 SVS PREP REGISTRATION</h1>
 
-  </div>
+        <p>
+            Track Alliance Preparation Resources & Availability
+        </p>
 
-  <!-- NETLIFY FORM -->
-  <form
-    name="war-registration"
-    method="POST"
-    data-netlify="true"
-  >
+    </div>
 
-    <input
-      type="hidden"
-      name="form-name"
-      value="war-registration"
+    <!-- ==========================================
+                 NETLIFY FORM
+    =========================================== -->
+
+    <form
+
+        name="svs-prep-form"
+
+        method="POST"
+
+        data-netlify="true"
+
+        netlify-honeypot="bot-field"
+
+        action="/success"
+
     >
 
-    <!-- PLAYER INFO -->
-    <div class="section">
-
-      <h2>👤 Player Information</h2>
-
-      <div class="field">
-        <label>Player Name</label>
-
         <input
-          type="text"
-          name="playerName"
-          required
+
+            type="hidden"
+
+            name="form-name"
+
+            value="svs-prep-form"
+
         >
-      </div>
 
-      <div class="field">
-        <label>Alliance Name</label>
+        <p hidden>
 
-        <input
-          type="text"
-          name="allianceName"
-          value="WAR"
-        >
-      </div>
+            <label>
 
-      <div class="field">
-        <label>General Availability Time (UTC)</label>
+                Don't fill this out
 
-        <input
-          type="text"
-          name="availability"
-          placeholder="Example: 15:00 - 21:00 UTC"
-        >
-      </div>
+                <input name="bot-field">
 
-      <div class="field">
-        <label>Your Time Zone</label>
+            </label>
 
-        <input
-          type="text"
-          name="timezone"
-          placeholder="Example: UTC+3"
-        >
-      </div>
+        </p>
 
-    </div>
+        <!-- ==========================================
+                 PLAYER INFORMATION
+        =========================================== -->
 
-    <!-- EVENTS -->
-    <div class="section">
+        <div class="section">
 
-      <h2>🕒 Event Preferences</h2>
+            <h2>👤 Player Information</h2>
 
-      <!-- Canyon -->
-      <div class="field">
+            <div class="field">
 
-        <label>Canyon Preferred Times</label>
+                <label>
 
-        <div class="checkbox-grid">
+                    👤 Player Name
 
-          <label class="checkbox-item">
-            <input type="checkbox" name="canyon" value="02:00 UTC">
-            02:00 UTC
-          </label>
+                </label>
 
-          <label class="checkbox-item">
-            <input type="checkbox" name="canyon" value="12:00 UTC">
-            12:00 UTC
-          </label>
+                <input
 
-          <label class="checkbox-item">
-            <input type="checkbox" name="canyon" value="14:00 UTC">
-            14:00 UTC
-          </label>
+                    type="text"
 
-          <label class="checkbox-item">
-            <input type="checkbox" name="canyon" value="19:00 UTC">
-            19:00 UTC
-          </label>
+                    name="playerName"
 
-          <label class="checkbox-item">
-            <input type="checkbox" name="canyon" value="21:00 UTC">
-            21:00 UTC
-          </label>
+                    placeholder="Enter Player Name"
 
-        </div>
+                    required
 
-        <div class="multi-note">
-          ✅ Multiple selections allowed
-        </div>
+                >
 
-      </div>
+            </div>
 
-      <!-- Foundry -->
-      <div class="field">
+            <div class="field">
 
-        <label>Foundry Preferred Times</label>
+                <label>
 
-        <div class="checkbox-grid">
+                    🆔 Player ID
 
-          <label class="checkbox-item">
-            <input type="checkbox" name="foundry" value="02:00 UTC">
-            02:00 UTC
-          </label>
+                </label>
 
-          <label class="checkbox-item">
-            <input type="checkbox" name="foundry" value="12:00 UTC">
-            12:00 UTC
-          </label>
+                <input
 
-          <label class="checkbox-item">
-            <input type="checkbox" name="foundry" value="14:00 UTC">
-            14:00 UTC
-          </label>
+                    type="text"
 
-          <label class="checkbox-item">
-            <input type="checkbox" name="foundry" value="19:00 UTC">
-            19:00 UTC
-          </label>
+                    name="playerId"
 
-        </div>
+                    placeholder="Enter Player ID"
 
-        <div class="multi-note">
-          ✅ Multiple selections allowed
-        </div>
+                    required
 
-      </div>
+                >
 
-      <!-- BT -->
-      <div class="field">
+            </div>
 
-        <label>BT Preferred Times</label>
+            <div class="field">
 
-        <div class="checkbox-grid">
+                <label>
 
-          <label class="checkbox-item"><input type="checkbox" name="bt" value="00:00 - 01:59 UTC">00:00 - 01:59 UTC</label>
-          <label class="checkbox-item"><input type="checkbox" name="bt" value="02:00 - 03:59 UTC">02:00 - 03:59 UTC</label>
-          <label class="checkbox-item"><input type="checkbox" name="bt" value="04:00 - 05:59 UTC">04:00 - 05:59 UTC</label>
-          <label class="checkbox-item"><input type="checkbox" name="bt" value="06:00 - 07:59 UTC">06:00 - 07:59 UTC</label>
-          <label class="checkbox-item"><input type="checkbox" name="bt" value="08:00 - 09:59 UTC">08:00 - 09:59 UTC</label>
-          <label class="checkbox-item"><input type="checkbox" name="bt" value="10:00 - 11:59 UTC">10:00 - 11:59 UTC</label>
-          <label class="checkbox-item"><input type="checkbox" name="bt" value="12:00 - 13:59 UTC">12:00 - 13:59 UTC</label>
-          <label class="checkbox-item"><input type="checkbox" name="bt" value="14:00 - 15:59 UTC">14:00 - 15:59 UTC</label>
-          <label class="checkbox-item"><input type="checkbox" name="bt" value="16:00 - 17:59 UTC">16:00 - 17:59 UTC</label>
-          <label class="checkbox-item"><input type="checkbox" name="bt" value="18:00 - 19:59 UTC">18:00 - 19:59 UTC</label>
-          <label class="checkbox-item"><input type="checkbox" name="bt" value="20:00 - 21:59 UTC">20:00 - 21:59 UTC</label>
-          <label class="checkbox-item"><input type="checkbox" name="bt" value="22:00 - 23:59 UTC">22:00 - 23:59 UTC</label>
+                    🛡 Alliance
+
+                </label>
+
+                <select
+
+                    id="allianceSelect"
+
+                    name="alliance"
+
+                >
+
+                    <option value="">Select Alliance</option>
+
+                    <option value="WAR">WAR</option>
+
+                    <option value="PWU">PWU</option>
+
+                    <option value="BAD">BAD</option>
+
+                    <option value="ROG">ROG</option>
+
+                    <option value="Other">Other</option>
+
+                </select>
+
+            </div>
+
+            <div
+
+                class="field"
+
+                id="otherAllianceField"
+
+                style="display:none;"
+
+            >
+
+                <label>
+
+                    Alliance Name
+
+                </label>
+
+                <input
+
+                    type="text"
+
+                    name="otherAlliance"
+
+                    placeholder="Enter Alliance Name"
+
+                >
+
+            </div>
 
         </div>
 
-        <div class="multi-note">
-          ✅ Multiple selections allowed
+        <!-- ==========================================
+                  SVS RESOURCES
+        =========================================== -->
+
+        <div class="section">
+
+            <h2>🔥 SVS Resources</h2>
+
+            <div class="resource-grid">
+
+                <!-- FIRE CRYSTALS -->
+
+                <div class="resource-card orange">
+
+                    <div class="resource-icon">
+
+                        🔥
+
+                    </div>
+
+                    <div class="resource-title">
+
+                        Fire Crystals
+
+                    </div>
+
+                    <div class="resource-sub">
+
+                        Current Fire Crystal stock
+
+                    </div>
+
+                    <input
+
+                        id="fireCrystals"
+
+                        name="fireCrystals"
+
+                        type="number"
+
+                        min="0"
+
+                        placeholder="0"
+
+                    >
+
+                </div>
+
+                <!-- RFC -->
+
+                <div class="resource-card purple">
+
+                    <div class="resource-icon">
+
+                        ✨
+
+                    </div>
+
+                    <div class="resource-title">
+
+                        Refined Fire Crystals
+
+                    </div>
+
+                    <div class="resource-sub">
+
+                        Furnace 6–8 upgrades
+
+                    </div>
+
+                    <input
+
+                        id="refinedFireCrystals"
+
+                        name="refinedFireCrystals"
+
+                        type="number"
+
+                        min="0"
+
+                        placeholder="0"
+
+                    >
+
+                </div>
+
+                <!-- SHARDS -->
+
+                <div class="resource-card cyan">
+
+                    <div class="resource-icon">
+
+                        💎
+
+                    </div>
+
+                    <div class="resource-title">
+
+                        Fire Crystal Shards
+
+                    </div>
+
+                    <div class="resource-sub">
+
+                        Available FC Shards
+
+                    </div>
+
+                    <input
+
+                        id="fireCrystalShards"
+
+                        name="fireCrystalShards"
+
+                        type="number"
+
+                        min="0"
+
+                        placeholder="0"
+
+                    >
+
+                </div>
+
+            </div>
+            <!-- ==========================================
+                    SPEEDUPS
+            =========================================== -->
+
+            <div class="warning-note">
+
+                <strong>💡 Tip</strong><br><br>
+
+                Split your GENERAL speedups between
+                Construction, Training and Research
+                according to your SVS Prep plan.
+
+            </div>
+
+            <div class="resource-grid">
+
+                <!-- CONSTRUCTION -->
+
+                <div class="resource-card green">
+
+                    <div class="resource-icon">
+                        🏗
+                    </div>
+
+                    <div class="resource-title">
+                        Construction
+                    </div>
+
+                    <div class="resource-sub">
+                        Construction Speedups (Days)
+                    </div>
+
+                    <input
+
+                        id="constructionSpeedups"
+
+                        name="constructionSpeedups"
+
+                        type="number"
+
+                        min="0"
+
+                        placeholder="0"
+
+                    >
+
+                </div>
+
+                <!-- TRAINING -->
+
+                <div class="resource-card red">
+
+                    <div class="resource-icon">
+                        🪖
+                    </div>
+
+                    <div class="resource-title">
+                        Troop Training
+                    </div>
+
+                    <div class="resource-sub">
+                        Training Speedups (Days)
+                    </div>
+
+                    <input
+
+                        id="troopTrainingSpeedups"
+
+                        name="troopTrainingSpeedups"
+
+                        type="number"
+
+                        min="0"
+
+                        placeholder="0"
+
+                    >
+
+                </div>
+
+                <!-- RESEARCH -->
+
+                <div class="resource-card blue">
+
+                    <div class="resource-icon">
+                        🔬
+                    </div>
+
+                    <div class="resource-title">
+                        Research
+                    </div>
+
+                    <div class="resource-sub">
+                        Research Speedups (Days)
+                    </div>
+
+                    <input
+
+                        id="researchSpeedups"
+
+                        name="researchSpeedups"
+
+                        type="number"
+
+                        min="0"
+
+                        placeholder="0"
+
+                    >
+
+                </div>
+
+            </div>
+
         </div>
 
-      </div>
+        <!-- ==========================================
+                  LIVE SCORE DASHBOARD
+        =========================================== -->
 
-      <!-- CJ -->
-      <div class="field">
+        <div class="score-panel">
 
-        <label>CJ Preferred Times</label>
+            <h2>
+                📊 Estimated SVS Contribution
+            </h2>
 
-        <div class="checkbox-grid">
+            <div class="score-label">
 
-          <label class="checkbox-item"><input type="checkbox" name="cj" value="00:00 - 01:59 UTC">00:00 - 01:59 UTC</label>
-          <label class="checkbox-item"><input type="checkbox" name="cj" value="02:00 - 03:59 UTC">02:00 - 03:59 UTC</label>
-          <label class="checkbox-item"><input type="checkbox" name="cj" value="04:00 - 05:59 UTC">04:00 - 05:59 UTC</label>
-          <label class="checkbox-item"><input type="checkbox" name="cj" value="06:00 - 07:59 UTC">06:00 - 07:59 UTC</label>
-          <label class="checkbox-item"><input type="checkbox" name="cj" value="08:00 - 09:59 UTC">08:00 - 09:59 UTC</label>
-          <label class="checkbox-item"><input type="checkbox" name="cj" value="10:00 - 11:59 UTC">10:00 - 11:59 UTC</label>
-          <label class="checkbox-item"><input type="checkbox" name="cj" value="12:00 - 13:59 UTC">12:00 - 13:59 UTC</label>
-          <label class="checkbox-item"><input type="checkbox" name="cj" value="14:00 - 15:59 UTC">14:00 - 15:59 UTC</label>
-          <label class="checkbox-item"><input type="checkbox" name="cj" value="16:00 - 17:59 UTC">16:00 - 17:59 UTC</label>
-          <label class="checkbox-item"><input type="checkbox" name="cj" value="18:00 - 19:59 UTC">18:00 - 19:59 UTC</label>
-          <label class="checkbox-item"><input type="checkbox" name="cj" value="20:00 - 21:59 UTC">20:00 - 21:59 UTC</label>
-          <label class="checkbox-item"><input type="checkbox" name="cj" value="22:00 - 23:59 UTC">22:00 - 23:59 UTC</label>
+                Estimated Total SVS Points
+
+            </div>
+
+            <div
+
+                id="estimatedScore"
+
+                class="total-score"
+
+            >
+
+                0
+
+            </div>
+
+            <div class="progress">
+
+                <div
+
+                    id="progressFill"
+
+                    class="progress-fill"
+
+                >
+
+                </div>
+
+            </div>
+
+            <div
+
+                id="rating"
+
+                class="rating"
+
+            >
+
+                ⭐ Beginner
+
+            </div>
+
+            <br><br>
+
+            <table
+
+                style="width:100%;
+                       color:white;
+                       border-collapse:collapse;
+                       font-size:17px;">
+
+                <tr>
+
+                    <td>🔥 Fire Crystals</td>
+
+                    <td
+                        id="fcScore"
+                        align="right">
+
+                        0
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>✨ Refined Fire Crystals</td>
+
+                    <td
+                        id="rfcScore"
+                        align="right">
+
+                        0
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>💎 FC Shards</td>
+
+                    <td
+                        id="shardScore"
+                        align="right">
+
+                        0
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>🏗 Construction</td>
+
+                    <td
+                        id="constructionScore"
+                        align="right">
+
+                        0
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>🪖 Training</td>
+
+                    <td
+                        id="trainingScore"
+                        align="right">
+
+                        0
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>🔬 Research</td>
+
+                    <td
+                        id="researchScore"
+                        align="right">
+
+                        0
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </div>
+        <!-- ==========================================
+                  AVAILABILITY
+        =========================================== -->
+
+        <div class="section">
+
+            <h2>
+                🕒 Availability (UTC)
+            </h2>
+
+            <div class="checkbox-grid">
+
+                <label class="checkbox-item">
+                    <input type="checkbox" name="availability[]" value="00:00 - 01:59 UTC">
+                    🕛 00:00 – 01:59
+                </label>
+
+                <label class="checkbox-item">
+                    <input type="checkbox" name="availability[]" value="02:00 - 03:59 UTC">
+                    🕑 02:00 – 03:59
+                </label>
+
+                <label class="checkbox-item">
+                    <input type="checkbox" name="availability[]" value="04:00 - 05:59 UTC">
+                    🕓 04:00 – 05:59
+                </label>
+
+                <label class="checkbox-item">
+                    <input type="checkbox" name="availability[]" value="06:00 - 07:59 UTC">
+                    🕕 06:00 – 07:59
+                </label>
+
+                <label class="checkbox-item">
+                    <input type="checkbox" name="availability[]" value="08:00 - 09:59 UTC">
+                    🕗 08:00 – 09:59
+                </label>
+
+                <label class="checkbox-item">
+                    <input type="checkbox" name="availability[]" value="10:00 - 11:59 UTC">
+                    🕙 10:00 – 11:59
+                </label>
+
+                <label class="checkbox-item">
+                    <input type="checkbox" name="availability[]" value="12:00 - 13:59 UTC">
+                    🕛 12:00 – 13:59
+                </label>
+
+                <label class="checkbox-item">
+                    <input type="checkbox" name="availability[]" value="14:00 - 15:59 UTC">
+                    🕑 14:00 – 15:59
+                </label>
+
+                <label class="checkbox-item">
+                    <input type="checkbox" name="availability[]" value="16:00 - 17:59 UTC">
+                    🕓 16:00 – 17:59
+                </label>
+
+                <label class="checkbox-item">
+                    <input type="checkbox" name="availability[]" value="18:00 - 19:59 UTC">
+                    🕕 18:00 – 19:59
+                </label>
+
+                <label class="checkbox-item">
+                    <input type="checkbox" name="availability[]" value="20:00 - 21:59 UTC">
+                    🕗 20:00 – 21:59
+                </label>
+
+                <label class="checkbox-item">
+                    <input type="checkbox" name="availability[]" value="22:00 - 23:59 UTC">
+                    🕙 22:00 – 23:59
+                </label>
+
+            </div>
+
+            <div style="margin-top:18px;color:#2563eb;font-weight:700;">
+
+                ✅ Multiple selections allowed
+
+            </div>
 
         </div>
 
-        <div class="multi-note">
-          ✅ Multiple selections allowed
+        <!-- ==========================================
+                 SUBMIT BUTTON
+        =========================================== -->
+
+        <button
+            type="submit"
+            class="submit-btn">
+
+            🚀 Submit SVS Prep Registration
+
+        </button>
+
+        <div class="footer">
+
+            Built for Whiteout Survival • SVS Prep Dashboard
+
         </div>
 
-      </div>
-
-    </div>
-
-    <!-- HEROES -->
-    <div class="section">
-
-      <h2>🛡 Joiner Hero Skill Levels</h2>
-
-      <div class="hero-grid">
-
-        <div class="hero-card">
-          <h3>Reina</h3>
-          <select name="Reina">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-        </div>
-
-        <div class="hero-card">
-          <h3>Jessie</h3>
-          <select name="Jessie">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-        </div>
-
-        <div class="hero-card">
-          <h3>Patrick</h3>
-          <select name="Patrick">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-        </div>
-
-        <div class="hero-card">
-          <h3>Seo Yoon</h3>
-          <select name="Seo Yoon">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-        </div>
-
-        <div class="hero-card">
-          <h3>Jasser</h3>
-          <select name="Jasser">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-        </div>
-
-        <div class="hero-card">
-          <h3>Philly</h3>
-          <select name="Philly">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-        </div>
-
-        <div class="hero-card">
-          <h3>Lumak</h3>
-          <select name="Lumak">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-        </div>
-
-        <div class="hero-card">
-          <h3>Mia</h3>
-          <select name="Mia">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-        </div>
-
-        <div class="hero-card">
-          <h3>Ling Zue</h3>
-          <select name="Ling Zue">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-        </div>
-
-        <div class="hero-card">
-          <h3>Sergey</h3>
-          <select name="Sergey">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-        </div>
-
-        <div class="hero-card">
-          <h3>Zinmann</h3>
-          <select name="Zinmann">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-        </div>
-
-      </div>
-
-    </div>
-
-    <button type="submit">
-      🚀 Submit Registration
-    </button>
-
-  </form>
+    </form>
 
 </div>
 
+<!-- ==========================================
+                JAVASCRIPT
+========================================== -->
+
+<script>
+
+const SCORE_VALUES={
+
+fireCrystal:5000,
+
+refinedFireCrystal:8000,
+
+fireCrystalShard:250,
+
+construction:15000,
+
+training:12000,
+
+research:18000,
+
+maxScore:10000000
+
+};
+
+function number(id){
+
+const el=document.getElementById(id);
+
+if(!el) return 0;
+
+let v=parseInt(el.value);
+
+if(isNaN(v)) v=0;
+
+if(v<0){
+
+v=0;
+
+el.value=0;
+
+}
+
+return v;
+
+}
+
+function comma(x){
+
+return Math.round(x).toLocaleString();
+
+}
+function calculateScore(){
+
+const fc=number("fireCrystals");
+
+const rfc=number("refinedFireCrystals");
+
+const shards=number("fireCrystalShards");
+
+const con=number("constructionSpeedups");
+
+const train=number("troopTrainingSpeedups");
+
+const res=number("researchSpeedups");
+
+const fcPts=fc*SCORE_VALUES.fireCrystal;
+
+const rfcPts=rfc*SCORE_VALUES.refinedFireCrystal;
+
+const shardPts=shards*SCORE_VALUES.fireCrystalShard;
+
+const conPts=con*SCORE_VALUES.construction;
+
+const trainPts=train*SCORE_VALUES.training;
+
+const resPts=res*SCORE_VALUES.research;
+
+const total=
+
+fcPts+
+
+rfcPts+
+
+shardPts+
+
+conPts+
+
+trainPts+
+
+resPts;
+
+document.getElementById("fcScore").innerHTML=comma(fcPts);
+
+document.getElementById("rfcScore").innerHTML=comma(rfcPts);
+
+document.getElementById("shardScore").innerHTML=comma(shardPts);
+
+document.getElementById("constructionScore").innerHTML=comma(conPts);
+
+document.getElementById("trainingScore").innerHTML=comma(trainPts);
+
+document.getElementById("researchScore").innerHTML=comma(resPts);
+
+document.getElementById("estimatedScore").innerHTML=comma(total);
+
+let pct=
+
+Math.min(
+
+100,
+
+total/
+
+SCORE_VALUES.maxScore
+
+*100
+
+);
+
+document.getElementById("progressFill").style.width=pct+"%";
+
+let rating="⭐ Beginner";
+
+if(total>=1000000)
+
+rating="⭐⭐ Good";
+
+if(total>=3000000)
+
+rating="⭐⭐⭐ Strong";
+
+if(total>=6000000)
+
+rating="⭐⭐⭐⭐ Excellent";
+
+if(total>=9000000)
+
+rating="⭐⭐⭐⭐⭐ Elite";
+
+document.getElementById("rating").innerHTML=rating;
+
+}
+
+const inputs=
+
+document.querySelectorAll(
+
+'input[type="number"]'
+
+);
+
+inputs.forEach(function(input){
+
+input.addEventListener(
+
+"input",
+
+function(){
+
+if(this.value<0){
+
+this.value=0;
+
+}
+
+calculateScore();
+
+}
+
+);
+
+});
+
+function toggleOtherAlliance(){
+
+const alliance=
+
+document.getElementById(
+
+"allianceSelect"
+
+).value;
+
+const other=
+
+document.getElementById(
+
+"otherAllianceField"
+
+);
+
+if(alliance==="Other"){
+
+other.style.display="block";
+
+}
+
+else{
+
+other.style.display="none";
+
+}
+
+}
+
+document
+
+.getElementById("allianceSelect")
+
+.addEventListener(
+
+"change",
+
+toggleOtherAlliance
+
+);
+
+calculateScore();
+
+</script>
+
 </body>
+
 </html>
