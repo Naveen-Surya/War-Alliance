@@ -1432,141 +1432,110 @@ padding:12px;
 
 <script>
 
-const SCORE_VALUES={
+const SCORE_VALUES = {
 
-fireCrystal:5000,
+    fireCrystal: 2000,
 
-refinedFireCrystal:8000,
+    fireCrystalShard: 1000,
 
-fireCrystalShard:250,
+    refinedFireCrystal: 30000,
 
-construction:15000,
+    constructionMinute: 30,
 
-training:12000,
+    researchMinute: 30,
 
-research:18000,
+    minutesPerDay: 1440,
 
-maxScore:10000000
+    maxScore: 10000000
 
 };
 
-function number(id){
-
-const el=document.getElementById(id);
-
-if(!el) return 0;
-
-let v=parseInt(el.value);
-
-if(isNaN(v)) v=0;
-
-if(v<0){
-
-v=0;
-
-el.value=0;
-
-}
-
-return v;
-
-}
-
-function comma(x){
-
-return Math.round(x).toLocaleString();
-
-}
 function calculateScore(){
 
-const fc=number("fireCrystals");
+    const fc = number("fireCrystals");
 
-const rfc=number("refinedFireCrystals");
+    const shard = number("fireCrystalShards");
 
-const shards=number("fireCrystalShards");
+    const rfc = number("refinedFireCrystals");
 
-const con=number("constructionSpeedups");
+    const constructionDays = number("constructionSpeedups");
 
-const train=number("troopTrainingSpeedups");
+    const researchDays = number("researchSpeedups");
 
-const res=number("researchSpeedups");
+    // Convert days → minutes
+    const constructionMinutes =
+        constructionDays * SCORE_VALUES.minutesPerDay;
 
-const fcPts=fc*SCORE_VALUES.fireCrystal;
+    const researchMinutes =
+        researchDays * SCORE_VALUES.minutesPerDay;
 
-const rfcPts=rfc*SCORE_VALUES.refinedFireCrystal;
+    const fcPts =
+        fc * SCORE_VALUES.fireCrystal;
 
-const shardPts=shards*SCORE_VALUES.fireCrystalShard;
+    const shardPts =
+        shard * SCORE_VALUES.fireCrystalShard;
 
-const conPts=con*SCORE_VALUES.construction;
+    const rfcPts =
+        rfc * SCORE_VALUES.refinedFireCrystal;
 
-const trainPts=train*SCORE_VALUES.training;
+    const constructionPts =
+        constructionMinutes *
+        SCORE_VALUES.constructionMinute;
 
-const resPts=res*SCORE_VALUES.research;
+    const researchPts =
+        researchMinutes *
+        SCORE_VALUES.researchMinute;
 
-const total=
+    const total =
+        fcPts +
+        shardPts +
+        rfcPts +
+        constructionPts +
+        researchPts;
 
-fcPts+
+    document.getElementById("fcScore").innerHTML =
+        comma(fcPts);
 
-rfcPts+
+    document.getElementById("shardScore").innerHTML =
+        comma(shardPts);
 
-shardPts+
+    document.getElementById("rfcScore").innerHTML =
+        comma(rfcPts);
 
-conPts+
+    document.getElementById("constructionScore").innerHTML =
+        comma(constructionPts);
 
-trainPts+
+    document.getElementById("researchScore").innerHTML =
+        comma(researchPts);
 
-resPts;
+    document.getElementById("estimatedScore").innerHTML =
+        comma(total);
 
-document.getElementById("fcScore").innerHTML=comma(fcPts);
+    const pct =
+        Math.min(
+            (total / SCORE_VALUES.maxScore) * 100,
+            100
+        );
 
-document.getElementById("rfcScore").innerHTML=comma(rfcPts);
+    document.getElementById("progressFill").style.width =
+        pct + "%";
 
-document.getElementById("shardScore").innerHTML=comma(shardPts);
+    let rating = "⭐ Beginner";
 
-document.getElementById("constructionScore").innerHTML=comma(conPts);
+    if(total >= 500000)
+        rating = "⭐⭐ Good";
 
-document.getElementById("trainingScore").innerHTML=comma(trainPts);
+    if(total >= 1500000)
+        rating = "⭐⭐⭐ Strong";
 
-document.getElementById("researchScore").innerHTML=comma(resPts);
+    if(total >= 3000000)
+        rating = "⭐⭐⭐⭐ Excellent";
 
-document.getElementById("estimatedScore").innerHTML=comma(total);
+    if(total >= 6000000)
+        rating = "⭐⭐⭐⭐⭐ Elite";
 
-let pct=
-
-Math.min(
-
-100,
-
-total/
-
-SCORE_VALUES.maxScore
-
-*100
-
-);
-
-document.getElementById("progressFill").style.width=pct+"%";
-
-let rating="⭐ Beginner";
-
-if(total>=1000000)
-
-rating="⭐⭐ Good";
-
-if(total>=3000000)
-
-rating="⭐⭐⭐ Strong";
-
-if(total>=6000000)
-
-rating="⭐⭐⭐⭐ Excellent";
-
-if(total>=9000000)
-
-rating="⭐⭐⭐⭐⭐ Elite";
-
-document.getElementById("rating").innerHTML=rating;
-
+    document.getElementById("rating").innerHTML =
+        rating;
 }
 
 const inputs=
