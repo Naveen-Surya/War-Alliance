@@ -1291,19 +1291,7 @@ padding:12px;
 
                 </tr>
 
-                <tr>
-
-                    <td>🪖 Training</td>
-
-                    <td
-                        id="trainingScore"
-                        align="right">
-
-                        0
-
-                    </td>
-
-                </tr>
+                
 
                 <tr>
 
@@ -1449,6 +1437,20 @@ const SCORE_VALUES = {
     maxScore: 10000000
 
 };
+
+
+function number(id){
+    const el=document.getElementById(id);
+    if(!el) return 0;
+    let value=parseInt(el.value);
+    if(isNaN(value)) value=0;
+    if(value<0){value=0;el.value=0;}
+    return value;
+}
+
+function comma(value){
+    return Math.round(value).toLocaleString();
+}
 
 function calculateScore(){
 
