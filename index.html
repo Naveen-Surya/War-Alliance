@@ -789,6 +789,8 @@ padding:12px;
 
         data-netlify="true"
 
+        netlify
+
         netlify-honeypot="bot-field"
 
         action="/success"
@@ -1291,7 +1293,19 @@ padding:12px;
 
                 </tr>
 
-                
+                <tr>
+
+                    <td>🪖 Training</td>
+
+                    <td
+                        id="trainingScore"
+                        align="right">
+
+                        0
+
+                    </td>
+
+                </tr>
 
                 <tr>
 
@@ -1420,124 +1434,141 @@ padding:12px;
 
 <script>
 
-const SCORE_VALUES = {
+const SCORE_VALUES={
 
-    fireCrystal: 2000,
+fireCrystal:5000,
 
-    fireCrystalShard: 1000,
+refinedFireCrystal:8000,
 
-    refinedFireCrystal: 30000,
+fireCrystalShard:250,
 
-    constructionMinute: 30,
+construction:15000,
 
-    researchMinute: 30,
+training:12000,
 
-    minutesPerDay: 1440,
+research:18000,
 
-    maxScore: 10000000
+maxScore:10000000
 
 };
 
-
 function number(id){
-    const el=document.getElementById(id);
-    if(!el) return 0;
-    let value=parseInt(el.value);
-    if(isNaN(value)) value=0;
-    if(value<0){value=0;el.value=0;}
-    return value;
+
+const el=document.getElementById(id);
+
+if(!el) return 0;
+
+let v=parseInt(el.value);
+
+if(isNaN(v)) v=0;
+
+if(v<0){
+
+v=0;
+
+el.value=0;
+
 }
 
-function comma(value){
-    return Math.round(value).toLocaleString();
+return v;
+
 }
 
+function comma(x){
+
+return Math.round(x).toLocaleString();
+
+}
 function calculateScore(){
 
-    const fc = number("fireCrystals");
+const fc=number("fireCrystals");
 
-    const shard = number("fireCrystalShards");
+const rfc=number("refinedFireCrystals");
 
-    const rfc = number("refinedFireCrystals");
+const shards=number("fireCrystalShards");
 
-    const constructionDays = number("constructionSpeedups");
+const con=number("constructionSpeedups");
 
-    const researchDays = number("researchSpeedups");
+const train=number("troopTrainingSpeedups");
 
-    // Convert days → minutes
-    const constructionMinutes =
-        constructionDays * SCORE_VALUES.minutesPerDay;
+const res=number("researchSpeedups");
 
-    const researchMinutes =
-        researchDays * SCORE_VALUES.minutesPerDay;
+const fcPts=fc*SCORE_VALUES.fireCrystal;
 
-    const fcPts =
-        fc * SCORE_VALUES.fireCrystal;
+const rfcPts=rfc*SCORE_VALUES.refinedFireCrystal;
 
-    const shardPts =
-        shard * SCORE_VALUES.fireCrystalShard;
+const shardPts=shards*SCORE_VALUES.fireCrystalShard;
 
-    const rfcPts =
-        rfc * SCORE_VALUES.refinedFireCrystal;
+const conPts=con*SCORE_VALUES.construction;
 
-    const constructionPts =
-        constructionMinutes *
-        SCORE_VALUES.constructionMinute;
+const trainPts=train*SCORE_VALUES.training;
 
-    const researchPts =
-        researchMinutes *
-        SCORE_VALUES.researchMinute;
+const resPts=res*SCORE_VALUES.research;
 
-    const total =
-        fcPts +
-        shardPts +
-        rfcPts +
-        constructionPts +
-        researchPts;
+const total=
 
-    document.getElementById("fcScore").innerHTML =
-        comma(fcPts);
+fcPts+
 
-    document.getElementById("shardScore").innerHTML =
-        comma(shardPts);
+rfcPts+
 
-    document.getElementById("rfcScore").innerHTML =
-        comma(rfcPts);
+shardPts+
 
-    document.getElementById("constructionScore").innerHTML =
-        comma(constructionPts);
+conPts+
 
-    document.getElementById("researchScore").innerHTML =
-        comma(researchPts);
+trainPts+
 
-    document.getElementById("estimatedScore").innerHTML =
-        comma(total);
+resPts;
 
-    const pct =
-        Math.min(
-            (total / SCORE_VALUES.maxScore) * 100,
-            100
-        );
+document.getElementById("fcScore").innerHTML=comma(fcPts);
 
-    document.getElementById("progressFill").style.width =
-        pct + "%";
+document.getElementById("rfcScore").innerHTML=comma(rfcPts);
 
-    let rating = "⭐ Beginner";
+document.getElementById("shardScore").innerHTML=comma(shardPts);
 
-    if(total >= 500000)
-        rating = "⭐⭐ Good";
+document.getElementById("constructionScore").innerHTML=comma(conPts);
 
-    if(total >= 1500000)
-        rating = "⭐⭐⭐ Strong";
+document.getElementById("trainingScore").innerHTML=comma(trainPts);
 
-    if(total >= 3000000)
-        rating = "⭐⭐⭐⭐ Excellent";
+document.getElementById("researchScore").innerHTML=comma(resPts);
 
-    if(total >= 6000000)
-        rating = "⭐⭐⭐⭐⭐ Elite";
+document.getElementById("estimatedScore").innerHTML=comma(total);
 
-    document.getElementById("rating").innerHTML =
-        rating;
+let pct=
+
+Math.min(
+
+100,
+
+total/
+
+SCORE_VALUES.maxScore
+
+*100
+
+);
+
+document.getElementById("progressFill").style.width=pct+"%";
+
+let rating="⭐ Beginner";
+
+if(total>=1000000)
+
+rating="⭐⭐ Good";
+
+if(total>=3000000)
+
+rating="⭐⭐⭐ Strong";
+
+if(total>=6000000)
+
+rating="⭐⭐⭐⭐ Excellent";
+
+if(total>=9000000)
+
+rating="⭐⭐⭐⭐⭐ Elite";
+
+document.getElementById("rating").innerHTML=rating;
+
 }
 
 const inputs=
